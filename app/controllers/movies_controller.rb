@@ -11,6 +11,12 @@ class MoviesController < ApplicationController
     render json: movie
   end
 
+  def reviews
+    movie = Movie.find_by(id: params[:id])
+    reviewed_movie = movie.reviews
+    render json: reviewed_movie
+  end
+
   def summary
     movie = find_movie
     render json: movie, serializer: MovieSummarySerializer
